@@ -1,38 +1,54 @@
-(function(){
+
 
 var player1Choice;
 var player2Choice;
+var continueGame = true;
 
-var gameChoice = prompt("Please Select Game Mode\n Two Player (1)\n Computer (2)");
-if(gameChoice == 1)
+while(continueGame==true)
 {
-  var player1Choice = prompt("Player One Please Select Your Move\n 1. Rock(r)\n 2. Paper(p)\n 3. Scissors(s)\n");
-  var player2Choice = prompt("Player Two Please Select Your Move\n 1. Rock(r)\n 2. Paper(p)\n 3. Scissors(s)\n");
-  comparison(player1Choice,player2Choice);
+  playGame();
 }
-if(gameChoice == 2)
+
+function playGame()
 {
-  var player1Choice = prompt("Player One Please Select Your Move\n 1. Rock(r)\n 2. Paper(p)\n 3. Scissors(s)\n");
-  var compChoice = Math.floor(Math.random() * 3) + 1;
-  if(compChoice === 1){
-    player2Choice="r";
+  var gameChoice = prompt("Please Select Game Mode\n Two Player (1)\n Computer (2)");
+  if(gameChoice == 1)
+  {
+    var player1Choice = prompt("Player One Please Select Your Move\n 1. Rock(r)\n 2. Paper(p)\n 3. Scissors(s)\n");
+    var player2Choice = prompt("Player Two Please Select Your Move\n 1. Rock(r)\n 2. Paper(p)\n 3. Scissors(s)\n");
+    comparison(player1Choice,player2Choice);
+    var cont = prompt("Continue y/n");
+    if(cont==="n"){
+      continueGame=false;
+    }
   }
-  else if(compChoice === 2){
-    player2Choice="p";
+  if(gameChoice == 2)
+  {
+    var player1Choice = prompt("Player One Please Select Your Move\n 1. Rock(r)\n 2. Paper(p)\n 3. Scissors(s)\n");
+    var compChoice = Math.floor(Math.random() * 3) + 1;
+    if(compChoice === 1){
+      player2Choice="r";
+    }
+    else if(compChoice === 2){
+      player2Choice="p";
+    }
+    else{
+      player2Choice="s";
+    }
+    comparison(player1Choice,player2Choice);
+    if(cont==="n"){
+      continueGame=false;
+    }
+
   }
-  else{
-    player2Choice="s";
+  else
+  {
+    alert("Invalid Game Choice or Move");
   }
-  comparison(player1Choice,player2Choice)
-}
-else
-{
-  alert("Invalid Game Choice or Move");
 }
 
 function comparison(choice1,choice2)
 {
-
   if(choice1===choice2)
   {
     alert("It's a Draw!");
@@ -71,5 +87,3 @@ function comparison(choice1,choice2)
 }
 
 
-
-})()
